@@ -1,0 +1,225 @@
+@charset "UTF-8";
+
+body {
+    font-family: 'Kanit', sans-serif;
+    font-size: 1.5em;
+    background-image: url("imgs/background.jpg");
+    background-position: center bottom;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+body .panel {
+    border-radius: 0px;
+    border: 0;
+    font-style: normal;
+}
+
+header {
+    width: 100%;
+    position: static;
+    top: 0;
+    text-align: left;
+    margin-top: 0;
+    margin-bottom: 75px;
+    padding: 20px 100px !important;
+    background-color: #FFF;
+    box-shadow: 1px 1px 10px #f26e2e;
+    z-index: 4;
+}
+
+.logo {
+    background-image: url("imgs/logo.jpg");
+}
+
+input[type="text"] {
+    border: 0;
+    outline: 0;
+    background: transparent;
+    border-bottom: 1px solid #d6d2ce;
+    border-radius: 0;
+    width: 100%;
+    color: #a3a3a3;
+}
+
+input[type="text"].search {
+    width: 100%;
+}
+
+input.ng-invalid {
+    color: red;
+}
+
+.submit-button {
+    background-color: #ee7033;
+    color: #FFF;
+}
+
+.sort-button {
+    background: #FFF;
+    border-radius: 0;    
+}
+
+.sort-options {
+    float: right;
+}
+
+.panel .panel-heading {
+    background-color: #0c8397;
+    background-image: none;
+    text-align: center;
+}
+
+.panel .panel-title {
+    color: #FFF;
+    font-size: 1.5em;    
+}
+
+.icon {
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 24px;
+    height: 24px;
+}
+
+.icon.transfer {
+    background-image: url("icons/arrows_transparent.png");
+}
+
+.icon.transactions {
+    background-image: url("icons/briefcase_transparent.png");
+}
+
+.merchant-icon {
+    width: 42px;
+    height: 42px;
+}
+
+.vr {
+    width: 10px;
+    height: 61px;
+    margin-left: -15px;
+}
+
+hr {
+    margin-bottom: auto;
+    margin-top: auto;
+}
+
+.vcenter {
+    display: inline-block;
+    vertical-align: middle;
+    float: none;
+}
+
+.transaction-item {
+    border: 0;
+}
+
+.vertical-align-middle {
+    vertical-align: middle;
+}
+
+@media screen and (max-width: 991px) {
+    header {
+        width: 100%;
+        position: static;
+        top: 0;
+        text-align: left;
+        margin-top: 0;
+        margin-bottom: 75px;
+        padding: 20px 100px !important;
+        background-color: #FFF;
+        box-shadow: 1px 1px 10px #f26e2e;
+        z-index: 4;
+    }
+
+    body {
+        font-family: 'Kanit', sans-serif;
+        font-size: 1.5em;
+        background-image: url("imgs/background.jpg");
+        background-position: center bottom;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+    }
+}
+
+@media screen and (max-width: 761px) {
+    header {
+        width: 100%;
+        position: static;
+        top: 0;
+        text-align: center;
+        margin-top: 0;
+        margin-bottom: 75px;
+        padding: 20px 50px !important;
+        background-color: #FFF;
+        box-shadow: 1px 1px 10px #f26e2e;
+        z-index: 4;
+    }
+
+    body {
+        font-family: 'Kanit', sans-serif;
+        font-size: 1.2em;
+        background-image: url("imgs/background.jpg");
+        background-position: center bottom;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+    }
+
+    header img {
+        width: 85%;
+        height: auto;
+    }
+
+    .sort-button {
+        background: #FFF;
+        border-radius: 0;    
+        font-size: 1.2em;
+    }
+
+    .sort-options {
+        float: none;
+        text-align: center;
+    }
+}
+
+@media screen and (max-width: 561px) {
+    header {
+        width: 100%;
+        position: static;
+        top: 0;
+        text-align: center;
+        margin-top: 0;
+        margin-bottom: 75px;
+        padding: 20px 50px !important;
+        background-color: #FFF;
+        box-shadow: 1px 1px 10px #f26e2e;
+        z-index: 4;
+    }
+
+    body {
+        font-family: 'Kanit', sans-serif;
+        font-size: 1em;
+        background-image: url("imgs/background.jpg");
+        background-position: center bottom;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+    }
+
+    header img {
+        width: 85%;
+        height: auto;
+    }
+
+    .sort-button {
+        background: #FFF;
+        border-radius: 0;    
+        font-size: 1em;
+    }
+
+    .sort-options {
+        float: none;
+        text-align: center;
+    }
+}

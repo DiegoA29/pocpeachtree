@@ -1,0 +1,121 @@
+<script type="text/ng-template" id="transaction_item.html">
+    <div class="">
+        <div class="vr vcenter" ng-style="{'background': transaction.categoryCode}"></div><!--
+    --><div class="vcenter col-xs-2 col-sm-2 col-md-2 col-lg-2">
+            <span>{{formatDate(transaction.transactionDate)}}</span>
+        </div><!--
+    --><div class="vcenter col-xs-2 col-sm-2 col-md-2 col-lg-2">
+            <img ng-src="{{transaction.merchantLogo}}" class="merchant-icon" title="Merchant Logo" alt="Merchant Logo" />
+        </div><!--
+    --><div class="vcenter col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            <div>
+                <label class="control-label"><strong>{{transaction.merchant}}</strong></label>
+                <div>{{transaction.transactionType}}</div>
+            </div>
+        </div><!--
+    --><div class="vcenter col-xs-2 col-sm-2 col-md-2 col-lg-2">
+            <strong><span>-{{transaction.amount | currency}}</span></strong>
+        </div>
+    </div>
+    <hr />
+</script>
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+            <div class="panel panel-default">
+                <div class="money-panel-heading panel-heading">
+                    <span class="col-xs-1 col-sm-1 col-md-1 col-lg-1 icon transfer"></span>
+                    <span class="panel-title">Make a Transfer</span>
+                </div>
+                <div class="panel-body">
+                    <form name="transferForm">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                <div class="form-group">
+                                    <label for="fromAccount" class="control-label">From Account
+                                        <i class="fa fa-exclamation-circle"
+                                                ng-show="transferForm.fromAccount.$invalid" title="Missing Source Account"></i>
+                                    </label>
+                                    <input type="text" id="fromAccount" name="fromAccount" ng-value="getFromAccountValue()" disabled="disabled" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                <div class="form-group">
+                                    <label for="toAccount" class="control-label">To Account
+                                        <i class="fa fa-exclamation-circle"
+                                                ng-show="transferForm.toAccount.$invalid" title="Missing Target Account"></i>
+                                    </label>
+                                    <input type="text" id="toAccount" name="toAccount" disabled="disabled" ng-value="toAccount" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                <div class="form-group">
+                                    <label for="amount" class="control-label">Amount
+                                        <i class="fa fa-exclamation-circle"
+                                                ng-show="transferForm.amount.$invalid" title="Missing Review Year"></i>
+                                    </label>
+                                    <input type="text" id="amount" name="amount" ng-model="amount" ng-required="true" currency format-as-currency/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-4 col-md-4 col-lg-4"></div>
+                            <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+                                <input type="button" class="form-control submit-button" value="SUBMIT" ng-click="transfer()" />
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+            <div class="panel panel-default">
+                <div class="money-panel-heading panel-heading">
+                    <span class="col-xs-1 col-sm-1 col-md-1 col-lg-1 icon transactions"></span>
+                    <span class="panel-title">Recent Transactions</span>
+                </div>
+                <div class="panel-body">
+                    <form name="transactionForm">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-5">
+                                <div class="form-group col-xs-10 col-sm-8 col-md-9 col-lg-10">
+                                    <input type="text" id="search" name="search" ng-model="search" placeholder="Search by typing..." />
+                                </div>
+                                <div class="form-group col-xs-2 col-sm-4 col-md-3 col-lg-2">
+                                    <span class="glyphicon glyphicon-remove pull-right" ng-click="clearSearch()"></span>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-8 col-md-8 col-lg-7">
+                                <div class="form-group sort-options">
+                                    <label class="control-label">Sort by</label>
+                                    <div class="btn-group">
+                                        <label class="btn btn-default sort-button" ng-model="newSortOrder" uib-btn-radio="'transactionDate'" ng-click="sortTransactions('transactionDate')">DATE 
+                                            <span class="vertical-align-middle" ng-class="sortDescending || newSortOrder !== 'transactionDate' ? 'glyphicon glyphicon-triangle-bottom' : 'glyphicon glyphicon-triangle-top'"></span>
+                                        </label>
+                                        <label class="btn btn-default sort-button" ng-model="newSortOrder" uib-btn-radio="'merchant'" ng-click="sortTransactions('merchant')">BENEFICIARY
+                                            <span class="vertical-align-middle" ng-class="sortDescending || newSortOrder !== 'merchant' ? 'glyphicon glyphicon-triangle-bottom' : 'glyphicon glyphicon-triangle-top'"></span>
+                                        </label>
+                                        <label class="btn btn-default sort-button" ng-model="newSortOrder" uib-btn-radio="'amount'" ng-click="sortTransactions('amount')">AMOUNT
+                                             <span class="vertical-align-middle" ng-class="sortDescending || newSortOrder !== 'amount' ? 'glyphicon glyphicon-triangle-bottom' : 'glyphicon glyphicon-triangle-top'"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                <hr />
+                                <div ng-repeat="transaction in transactions | searchFilter:searchFields:search" ng-include="'transaction_item.html'" class="transaction-item"></div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
